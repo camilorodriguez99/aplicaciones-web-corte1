@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gráfico Estadístico de Errores</title>
+    <!-- Cargar la librería de Google Charts -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
+<body>
+
+    <h1>Trabajo de Aplicaciones Web</h1>
+    <p>Nombres: JUAN CAMILO RODRIGUEZ PAYAN</p>
+    <p>Código: 2316625</p>
+
+    <!-- Imagen de la ecuación -->
+    <h2>Ecuación Matemática</h2>
+    <img src="ecuacion.png" alt="Ecuación Matemática" style="width:500px;">
+
+    <!-- Botón para procesar -->
+    <button onclick="procesar()">Procesar</button>
+
+    <!-- Contenedor donde se mostrará el gráfico -->
+    <div id="grafico" style="width: 900px; height: 500px;"></div>
+
+    <!-- Scripts de JavaScript para calcular los errores y generar el gráfico -->
+    <script type="text/javascript">
+        google.charts.load('current', {'packages':['corechart']});
+
+        function procesar() {
+            let totalErroresArcoseno = 0;
+            let totalErroresArcocoseno = 0;
+            let totalErroresRaizCuadrada = 0;
+            let totalErroresDivision = 0;
+            let totalErroresLogaritmo = 0;
+
+            // Realizar 1000 ciclos y generar valores aleatorios
+            for (let i = 0; i < 1000; i++) {
+                let a = Math.random() * 2 - 1;
+                let b = Math.random() * 2 - 1;
+                let c = Math.random() * 2 - 1;
+                let d = Math.random() * 2 - 1;
+                let e = Math.random() * 2 - 1;
+
+                // Simulación de errores en los cálculos
+                if (isNaN(Math.asin(a))) totalErroresArcoseno++;
+                if (isNaN(Math.acos(b))) totalErroresArcocoseno++;
+                if (Math.sqrt(c) < 0) totalErroresRaizCuadrada++;
+                if (d == 0) totalErroresDivision++;
+                if (isNaN(Math.log(e))) totalErroresLogaritmo++;
+            }
+
+            // Dibujar el gráfico con los errores calculados
+            drawChart(totalErroresArcoseno, totalErroresArcocoseno, totalErroresRaizCuadrada, totalErroresDivision, totalErroresLogaritmo);
+        }
+
+        // Función para dibujar el gráfico de pastel
+        function drawChart(arcoseno, arcocoseno, raizCuadrada, division, logaritmo) {
+            var data = google.visualization.arrayToDataTable([
+                ['Error', 'Cantidad'],
+                ['Arcoseno', arcoseno],
+                ['Arcocoseno', arcocoseno],
+                ['Raíz Cuadrada', raizCuadrada],
+                ['División', division],
+                ['Logaritmo Natural', logaritmo]
+            ]);
+
+            var options = {
+                title: 'Distribución de Errores',
+                is3D: true  // Opcional: Cambia a true para un gráfico 3D
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('grafico'));
+            chart.draw(data, options);
+        }
+
+        // Cargar Google Charts y preparar la función
+        google.charts.setOnLoadCallback(function() {
+            drawChart(0, 0, 0, 0, 0); // Inicializar el gráfico con valores vacíos
+        });
+    </script>
+</body>
+</html>
