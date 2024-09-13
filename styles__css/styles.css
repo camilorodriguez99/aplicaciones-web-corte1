@@ -1,0 +1,116 @@
+/* Estilos generales para el documento */  
+html, body {  
+    font-family: 'Roboto', sans-serif; /* Cambiado a una fuente diferente */  
+    margin: 20px;  
+    padding: 0;  
+    background-image: url(../imagen/fondo.jpg); /* Nueva imagen de fondo */  
+    background-size: cover;  
+    background-attachment: fixed; /* Fijo para que no se mueva al hacer scroll */
+}  
+
+/* Estilo personalizado para los botones */  
+.btn-verde {  
+    background-color: #6a5acd; /* Cambiado a un tono morado */  
+    color: #ffffff;  
+    padding: 12px 28px;  
+    border: 2px solid #483d8b; /* Borde morado oscuro */  
+    border-radius: 8px; /* Bordes más redondeados */  
+    cursor: pointer;  
+    font-size: 16px;  
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Sombra agregada */  
+    transition: all 0.3s ease;  
+    text-align: center;  
+    margin: 10px 5px;  
+}  
+
+.btn-verde:hover {  
+    background-color: #836fff; /* Color morado más claro en hover */  
+    transform: scale(1.05); /* Efecto de zoom al hacer hover */  
+}  
+
+/* Estilo para el contenedor de resultados */  
+.container-resultados {  
+    margin: 30px 0;  
+    padding: 15px;  
+    border: 3px dashed #6a5acd; /* Borde modificado a líneas discontinuas */  
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo semitransparente */  
+    border-radius: 10px;  
+}  
+
+/* Estilos para tablas */  
+table {  
+    width: 90%;  
+    border-collapse: separate; /* Cambiado a 'separate' para más espacio entre bordes */  
+    border-spacing: 0 10px; /* Espaciado entre filas */  
+    margin: 30px auto;  
+}  
+
+th, td {  
+    border: 2px solid #b0c4de; /* Color de borde azul suave */  
+    padding: 12px;  
+    text-align: center;  
+    background-color: #f5f5f5; /* Fondo claro para las celdas */  
+}  
+
+th {  
+    background-color: #4682b4; /* Azul para la cabeza de la tabla */  
+    color: #ffffff;  
+}  
+
+/* Estilo para el encabezado de la tabla */  
+thead {  
+    background-color: #87cefa; /* Azul cielo claro para la cabecera */  
+}
+
+/* Centrando el gráfico de Google Charts */  
+#piechart {  
+    display: flex;  
+    justify-content: center;  
+    align-items: center;  
+    margin: 0 auto; /* Centrar horizontalmente */  
+    width: 900px; /* Mantén las dimensiones del gráfico */  
+    height: 500px;  
+}
+
+/* Estilo para el contenedor principal */  
+.container {  
+    background-color: rgba(255, 255, 255, 0.9);  
+    padding: 20px;  
+    border-radius: 12px;  
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2); /* Sombra para resaltar el contenido */  
+    margin: 20px auto;  
+    max-width: 1200px; /* Limitar el ancho del contenido principal */  
+}
+
+/* Estilo para el encabezado principal */  
+h1 {  
+    text-align: center;  
+    color: #4b0082; /* Color índigo para el encabezado */  
+    margin-bottom: 20px;  
+}
+
+/* Estilo para las etiquetas y la información de alumno */  
+.info h2, .info p {  
+    text-align: center;  
+    color: #483d8b;  
+    margin: 5px 0;  
+}
+
+/* Mejoras para el botón procesar */  
+#procesar {  
+    background-color: #6a5acd;  
+    color: white;  
+    padding: 10px 20px;  
+    border: none;  
+    border-radius: 8px;  
+    font-size: 18px;  
+    cursor: pointer;  
+    transition: all 0.3s ease;  
+    display: block;  
+    margin: 20px auto;  
+}
+
+#procesar:hover {  
+    background-color: #836fff;  
+    transform: scale(1.05);  
+}

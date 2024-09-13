@@ -2,82 +2,218 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gráfico Estadístico de Errores</title>
-    <!-- Cargar la librería de Google Charts -->
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <title>CORTE 1 DE PROGRAMACIÓN WEB</title>
+
+    <link rel="stylesheet" href="styles__css/styles.css">
+
 </head>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['Tipo de Error', 'Totales'],
+            ['Errores de Arcoseno', 0],
+            ['Errores de Arcocoseno', 0],
+            ['Errores de Raíz Cuadrada', 0],
+            ['Errores de División', 0],
+            ['Errores de Logaritmo', 0]
+        ]);
+
+        var options = {
+            title: 'Distribución de Errores',
+            is3D: true,
+            pieSliceText: 'label',
+            backgroundColor: '#f4f4f4'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+    }
+
+    function updateChart(erroresArcoseno, erroresArcocoseno, erroresRaizCuadrada, erroresDivision, erroresLogaritmo) {
+        var data = google.visualization.arrayToDataTable([
+            ['Tipo de Error', 'Totales'],
+            ['Errores de Arcoseno', erroresArcoseno],
+            ['Errores de Arcocoseno', erroresArcocoseno],
+            ['Errores de Raíz Cuadrada', erroresRaizCuadrada],
+            ['Errores de División', erroresDivision],
+            ['Errores de Logaritmo', erroresLogaritmo]
+        ]);
+
+        var options = {
+            title: 'Distribución de Errores',
+            is3D: true,
+            pieSliceText: 'label',
+            backgroundColor: '#f4f4f4'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+    }
+</script>
+
 <body>
 
-    <h1>Trabajo de Aplicaciones Web</h1>
-    <p>Nombres: JUAN CAMILO RODRIGUEZ PAYAN</p>
-    <p>Código: 2316625</p>
+    <div class="container">
+        <h1>CORTE 1 DE PROGRAMACIÓN WEB</h1>
+        <div class="info">
+            <h2>ALUMNO:</h2>
+            <p>JUAN CAMILO RODRIGUEZ PAYAN</p>
+            <p>CÓDIGO: 2316625</p>
+        </div>
 
-    <!-- Imagen de la ecuación -->
-    <h2>Ecuación Matemática</h2>
-    <img src="ecuacion.png" alt="Ecuación Matemática" style="width:500px;">
+        <center><img src="imagen/ecuacion.png" alt="ECUACION" width="800"></center>
 
-    <!-- Botón para procesar -->
-    <button onclick="procesar()">Procesar</button>
+        <button id="procesar">PROCESAR</button>
 
-    <!-- Contenedor donde se mostrará el gráfico -->
-    <div id="grafico" style="width: 900px; height: 500px;"></div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Tipo de Error</th>
+                    <th>Totales</th>
+                    <th>Porcentaje</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Total de errores de arcoseno</td>
+                    <td id="erroresArcoseno">0</td>
+                    <td id="porcentajeArcoseno">0%</td>
+                </tr>
+                <tr>
+                    <td>Total de errores de arcocoseno</td>
+                    <td id="erroresArcocoseno">0</td>
+                    <td id="porcentajeArcocoseno">0%</td>
+                </tr>
+                <tr>
+                    <td>Total de errores de raíz cuadrada</td>
+                    <td id="erroresRaizCuadrada">0</td>
+                    <td id="porcentajeRaizCuadrada">0%</td>
+                </tr>
+                <tr>
+                    <td>Total de errores de división</td>
+                    <td id="erroresDivision">0</td>
+                    <td id="porcentajeDivision">0%</td>
+                </tr>
+                <tr>
+                    <td>Total de errores de logaritmo natural</td>
+                    <td id="erroresLogaritmo">0</td>
+                    <td id="porcentajeLogaritmo">0%</td>
+                </tr>
+            </tbody>
+        </table>
 
-    <!-- Scripts de JavaScript para calcular los errores y generar el gráfico -->
-    <script type="text/javascript">
-        google.charts.load('current', {'packages':['corechart']});
+        <div id="piechart" style="width: 900px; height: 500px;"></div>
+    </div>
 
-        function procesar() {
-            let totalErroresArcoseno = 0;
-            let totalErroresArcocoseno = 0;
-            let totalErroresRaizCuadrada = 0;
-            let totalErroresDivision = 0;
-            let totalErroresLogaritmo = 0;
+    <script>
+        document.getElementById('procesar').addEventListener('click', () => {
+            let erroresArcoseno = 0;
+            let erroresArcocoseno = 0;
+            let erroresRaizCuadrada = 0;
+            let erroresDivision = 0;
+            let erroresLogaritmo = 0;
 
-            // Realizar 1000 ciclos y generar valores aleatorios
             for (let i = 0; i < 1000; i++) {
-                let a = Math.random() * 2 - 1;
-                let b = Math.random() * 2 - 1;
-                let c = Math.random() * 2 - 1;
-                let d = Math.random() * 2 - 1;
-                let e = Math.random() * 2 - 1;
+                let m = randomValue();
+                let n = randomValue();
+                let d = randomValue();
+                let p = randomValue();
+                let q = randomValue();
+                let r = randomValue();
+                let s = randomValue();
+                let t = randomValue();
+                let u = randomValue();
+                let v = randomValue();
+                let w = randomValue();
+                let x = randomValue();
+                let f = randomValue();
+                let z = randomValue();
+                let a = randomValue();
+                let b = randomValue();
+                let c = randomValue();
 
-                // Simulación de errores en los cálculos
-                if (isNaN(Math.asin(a))) totalErroresArcoseno++;
-                if (isNaN(Math.acos(b))) totalErroresArcocoseno++;
-                if (Math.sqrt(c) < 0) totalErroresRaizCuadrada++;
-                if (d == 0) totalErroresDivision++;
-                if (isNaN(Math.log(e))) totalErroresLogaritmo++;
+                let { y, error } = calcularY(m, n, d, p, q, r, s, t, u, v, w, x, f, z, a, b, c);
+
+                erroresArcoseno += error.arcoseno;
+                erroresArcocoseno += error.arcocoseno;
+                erroresRaizCuadrada += error.raizCuadrada;
+                erroresDivision += error.division;
+                erroresLogaritmo += error.logaritmo;
             }
 
-            // Dibujar el gráfico con los errores calculados
-            drawChart(totalErroresArcoseno, totalErroresArcocoseno, totalErroresRaizCuadrada, totalErroresDivision, totalErroresLogaritmo);
+            const totalCiclos = 1000;
+
+            document.getElementById('erroresArcoseno').innerText = erroresArcoseno;
+            document.getElementById('porcentajeArcoseno').innerText = `${((erroresArcoseno / totalCiclos) * 100).toFixed(2)}%`;
+
+            document.getElementById('erroresArcocoseno').innerText = erroresArcocoseno;
+            document.getElementById('porcentajeArcocoseno').innerText = `${((erroresArcocoseno / totalCiclos) * 100).toFixed(2)}%`;
+
+            document.getElementById('erroresRaizCuadrada').innerText = erroresRaizCuadrada;
+            document.getElementById('porcentajeRaizCuadrada').innerText = `${((erroresRaizCuadrada / totalCiclos) * 100).toFixed(2)}%`;
+
+            document.getElementById('erroresDivision').innerText = erroresDivision;
+            document.getElementById('porcentajeDivision').innerText = `${((erroresDivision / totalCiclos) * 100).toFixed(2)}%`;
+
+            document.getElementById('erroresLogaritmo').innerText = erroresLogaritmo;
+            document.getElementById('porcentajeLogaritmo').innerText = `${((erroresLogaritmo / totalCiclos) * 100).toFixed(2)}%`;
+
+            updateChart(erroresArcoseno, erroresArcocoseno, erroresRaizCuadrada, erroresDivision, erroresLogaritmo);
+        });
+
+        function randomValue() {
+            return Math.random() * 2 - 1;
         }
 
-        // Función para dibujar el gráfico de pastel
-        function drawChart(arcoseno, arcocoseno, raizCuadrada, division, logaritmo) {
-            var data = google.visualization.arrayToDataTable([
-                ['Error', 'Cantidad'],
-                ['Arcoseno', arcoseno],
-                ['Arcocoseno', arcocoseno],
-                ['Raíz Cuadrada', raizCuadrada],
-                ['División', division],
-                ['Logaritmo Natural', logaritmo]
-            ]);
-
-            var options = {
-                title: 'Distribución de Errores',
-                is3D: true  // Opcional: Cambia a true para un gráfico 3D
+        function calcularY(m, n, d, p, q, r, s, t, u, v, w, x, f, z, a, b, c) {
+            let error = {
+                arcoseno: 0,
+                arcocoseno: 0,
+                raizCuadrada: 0,
+                division: 0,
+                logaritmo: 0
             };
 
-            var chart = new google.visualization.PieChart(document.getElementById('grafico'));
-            chart.draw(data, options);
-        }
+            try {
+                if (m - n < -1 || m - n > 1) {
+                    error.arcocoseno++;
+                    throw new Error('Arcocoseno fuera de rango');
+                }
+                if ((n * Math.sqrt(d)) / p < -1 || (n * Math.sqrt(d)) / p > 1) {
+                    error.arcoseno++;
+                    throw new Error('Arcoseno fuera de rango');
+                }
+                if (s - t < 0 || w - x < 0 || a + b < 0) {
+                    error.raizCuadrada++;
+                    throw new Error('Raíz cuadrada de número negativo');
+                }
+                if (v === 0 || c === 0) {
+                    error.division++;
+                    throw new Error('División por cero');
+                }
+                if (q * r <= 0 || f + z <= 0) {
+                    error.logaritmo++;
+                    throw new Error('Logaritmo de número no positivo');
+                }
 
-        // Cargar Google Charts y preparar la función
-        google.charts.setOnLoadCallback(function() {
-            drawChart(0, 0, 0, 0, 0); // Inicializar el gráfico con valores vacíos
-        });
+                const numerador = Math.acos(m - n) + Math.asin((n * Math.sqrt(d)) / p) + Math.log(q * r) + Math.sqrt(s - t);
+                const denominador = Math.asin((u / v) + Math.sqrt(w - x)) * Math.log(f + z) + Math.acos((Math.sqrt(a + b)) / c);
+
+                return { y: numerador / denominador, error };
+            } catch {
+                return { y: NaN, error };
+            }
+        }
     </script>
+
 </body>
 </html>
